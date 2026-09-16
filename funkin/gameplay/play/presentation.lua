@@ -30,6 +30,10 @@ function Presentation.prepareCamera(self, PlayState, conductor)
 	else
 		self.camFollow = Point()
 		self.camFollow.tweening = false
+		self.camTarget = self.dad or self.boyfriend or self.gf
+		if self.camTarget then
+			self.camFollow:set(self:getCameraPosition(self.camTarget))
+		end
 	end
 end
 

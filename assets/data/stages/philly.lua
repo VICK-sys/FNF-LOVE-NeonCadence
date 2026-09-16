@@ -15,6 +15,8 @@ local startedMoving = false
 local phillyWindow, phillyTrain, trainSound
 
 function create()
+	camZoom = 1.1
+
 	local bg = Sprite(-95)
 	bg:loadTexture(paths.getImage(SCRIPT_PATH .. 'sky'))
 	bg.scrollFactor:set(0.1, 0.1)
