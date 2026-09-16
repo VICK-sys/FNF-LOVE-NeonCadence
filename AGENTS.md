@@ -9,6 +9,17 @@ reviews, and takes responsibility for the changes. Using these tools is optional
 This policy applies to this fork. Contributions sent to the upstream project
 must follow that project's own contribution rules.
 
+## Human-authored comments and documentation
+
+Code comments, docstrings, and repository documentation must be written by
+human contributors. LLMs and other AI assistants must not create, expand, or
+rewrite them. Reviewing or copying LLM-generated text does not satisfy this
+authorship requirement.
+
+Assistants may preserve or relocate existing comments and documentation when
+refactoring the code they describe. Keep copyright notices and license terms
+intact.
+
 ## Required human explanation
 
 For every LLM-assisted contribution, the submitting human must provide an
@@ -29,9 +40,11 @@ not demonstrate understanding.
 
 ## Guidance for AI assistants
 
-- You may help with code, debugging, tests, reviews, and documentation.
-- Explain your changes and report validation results accurately; do not claim
-  that unperformed checks passed.
+- You may help with code, debugging, tests, and reviews. Do not author code
+  comments, docstrings, or repository documentation.
+- Explain your changes in conversation and report validation results accurately;
+  do not claim that unperformed checks passed. Conversational explanations do
+  not replace human-authored comments, documentation, or contribution explanations.
 - Remind the user to review the diff and supply the required human explanation
   before submitting a contribution. Do not write that explanation on their
   behalf or claim that the user understands changes they have not explained.
