@@ -6,6 +6,13 @@ FNF-LOVE-NeonCadence permits contributions made with large language models
 (LLMs) and other AI assistants. Human contributors remain responsible for the
 correctness and quality of everything they submit. Using AI tools is optional.
 
+Code comments, docstrings, and repository documentation must be written by
+human contributors. LLMs and other AI assistants must not create, expand, or
+rewrite them. Human review of generated text does not satisfy this requirement.
+Assistants may preserve or relocate existing comments and documentation when
+refactoring the code they describe, while retaining copyright notices and
+license terms.
+
 For every LLM-assisted contribution, the submitting human must review the full
 diff and write an explanation in their own words in the pull request description
 (or accompanying commit message when contributing without a pull request).
