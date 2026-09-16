@@ -26,7 +26,7 @@ function MainMenuState:enter()
 		Discord.changePresence({details = "In the Menus", state = "Main Menu"})
 	end
 
-	self.menuItems = {'storymode', 'freeplay', 'credits', 'options', 'donate'}
+	self.menuItems = {'storymode', 'freeplay', 'credits', 'options'}
 
 	self.selectedSomethin = false
 
@@ -148,11 +148,6 @@ local triggerChoices = {
 		self.optionsUI:screenCenter()
 		self:add(self.optionsUI)
 		return false
-	end},
-	donate = {false, function(self)
-		love.system.openURL('https://ninja-muffin24.itch.io/funkin')
-		self.menuList.lock = false
-		return true
 	end}
 }
 
