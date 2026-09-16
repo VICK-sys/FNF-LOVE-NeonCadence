@@ -40,13 +40,13 @@ function create()
 
 	local bgSky = Sprite()
 	bgSky:loadTexture(paths.getImage(SCRIPT_PATH .. 'weebSky'))
-	bgSky:setScrollFactor(0.1, 0.1)
+	bgSky.scrollFactor:set(0.1, 0.1)
 	add(bgSky)
 	bgSky.antialiasing = false
 
 	local bgSchool = Sprite(-12, 0)
 	bgSchool:loadTexture(paths.getImage(SCRIPT_PATH .. 'weebSchool'))
-	bgSchool:setScrollFactor(0.6, 0.90)
+	bgSchool.scrollFactor:set(0.6, 0.90)
 	add(bgSchool)
 	bgSchool.antialiasing = false
 
@@ -63,20 +63,20 @@ function create()
 
 	local bgTrees = Sprite(-100, -168)
 	bgTrees:setFrames(paths.getPackerAtlas(SCRIPT_PATH .. 'weebTrees'))
-	bgTrees:addAnim('treeLoop', {
+	bgTrees.animation:add('treeLoop', {
 		0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18
 	}, 12)
-	bgTrees:play('treeLoop')
-	bgTrees:setScrollFactor(0.85, 0.85)
+	bgTrees.animation:play('treeLoop')
+	bgTrees.scrollFactor:set(0.85, 0.85)
 	bgTrees:updateHitbox()
 	add(bgTrees)
 	bgTrees.antialiasing = false
 
 	local treeLeaves = Sprite(-20, 10)
 	treeLeaves:setFrames(paths.getSparrowAtlas(SCRIPT_PATH .. 'petals'))
-	treeLeaves:setScrollFactor(0.85, 0.85)
-	treeLeaves:addAnimByPrefix('PETALS ALL', 'PETALS ALL', 24, true)
-	treeLeaves:play('PETALS ALL')
+	treeLeaves.scrollFactor:set(0.85, 0.85)
+	treeLeaves.animation:addByPrefix('PETALS ALL', 'PETALS ALL', 24, true)
+	treeLeaves.animation:play('PETALS ALL')
 	treeLeaves:updateHitbox()
 	add(treeLeaves)
 	treeLeaves.antialiasing = false
@@ -107,7 +107,7 @@ function postCreate()
 	end
 
 	dad:dance()
-	dad:finish()
+	dad.anim:finish()
 	cameraMovement(getCameraPosition(camTarget))
 	game.camera:follow(camFollow, nil)
 

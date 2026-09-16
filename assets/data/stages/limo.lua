@@ -40,7 +40,7 @@ function postCreate()
 	self:insert(self:indexOf(bgLimo) + 1, grpLimoDancers)
 	for i = 0, 4 do
 		local dancer = BackgroundDancer((370 * i) + 230, bgLimo.y - 380)
-		dancer:setScrollFactor(0.4, 0.4)
+		dancer.scrollFactor:set(0.4, 0.4)
 		grpLimoDancers:add(dancer)
 	end
 	skyBG.shader = shader:get()

@@ -8,7 +8,10 @@
 		["singRIGHT", "Pico Note Right0", [], 24, false, [-48, 2]],
 		["singLEFT", "Pico NOTE LEFT0", [], 24, false, [85, -10]],
 		["singRIGHTmiss", "Pico Note Right Miss", [], 24, false, [-45, 50]],
-		["singLEFTmiss", "Pico NOTE LEFT miss", [], 24, false, [83, 28]]
+		["singLEFTmiss", "Pico NOTE LEFT miss", [], 24, false, [83, 28]],
+		["cock", "Pico Reload", [], 24, false, [1, -4], "characters/Pico_Shooting"],
+		["shoot", "Pico Shoot Hip Full", [], 24, false, [316, 221], "characters/Pico_Shooting"],
+		["shootMISS", "Pico Hit Can", [], 24, false, [98, -6], "characters/Pico_Shooting"]
 	],
 	"position": [-375, 300],
 	"camera_points": [250, 20],

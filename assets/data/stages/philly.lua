@@ -17,19 +17,19 @@ local phillyWindow, phillyTrain, trainSound
 function create()
 	local bg = Sprite(-95)
 	bg:loadTexture(paths.getImage(SCRIPT_PATH .. 'sky'))
-	bg:setScrollFactor(0.1, 0.1)
+	bg.scrollFactor:set(0.1, 0.1)
 	self:add(bg)
 
 	local city = Sprite(0, 16)
 	city:loadTexture(paths.getImage(SCRIPT_PATH .. 'city'))
-	city:setScrollFactor(0.3, 0.3)
+	city.scrollFactor:set(0.3, 0.3)
 	city:setGraphicSize(math.floor(city.width * 0.85))
 	city:updateHitbox()
 	self:add(city)
 
 	phillyWindow = Sprite(66, 127)
 	phillyWindow:loadTexture(paths.getImage(SCRIPT_PATH .. 'window'))
-	phillyWindow:setScrollFactor(0.3, 0.3)
+	phillyWindow.scrollFactor:set(0.3, 0.3)
 	phillyWindow.alpha = 0
 	phillyWindow:setGraphicSize(math.floor(phillyWindow.width * 0.85))
 	phillyWindow:updateHitbox()

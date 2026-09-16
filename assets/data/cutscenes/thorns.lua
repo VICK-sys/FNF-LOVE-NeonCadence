@@ -17,20 +17,20 @@ function postCreate()
 
 	local senpaiEvil = Sprite(27, -22)
 	senpaiEvil:setFrames(paths.getSparrowAtlas('stages/school-evil/senpaiCrazy'))
-	senpaiEvil:addAnimByPrefix('idle', 'Senpai Pre Explosion', 24, false)
-	senpaiEvil:setScrollFactor()
+	senpaiEvil.animation:addByPrefix('idle', 'Senpai Pre Explosion', 24, false)
+	senpaiEvil.scrollFactor:set(0, 0)
 	senpaiEvil:updateHitbox()
 	senpaiEvil.antialiasing = false
 
 	music = game.sound.play(paths.getMusic('gameplay/LunchboxScary'), 0.8, true, true)
 
-	red:setScrollFactor()
+	red.scrollFactor:set(0, 0)
 	add(red)
 
-	white:setScrollFactor()
+	white.scrollFactor:set(0, 0)
 	white.alpha = 0
 
-	black:setScrollFactor()
+	black.scrollFactor:set(0, 0)
 	add(black)
 
 	for delay = 1, 7 do
@@ -56,7 +56,7 @@ function postCreate()
 
 					Tween.tween(game.camera, {zoom = stage.camZoom - 0.2}, 2.4, {ease = Ease.sineIn})
 
-					senpaiEvil:play('idle')
+					senpaiEvil.animation:play('idle')
 					game.sound.play(paths.getSound('gameplay/Senpai_Dies'), 1, false, true, function()
 						remove(senpaiEvil)
 						remove(red)

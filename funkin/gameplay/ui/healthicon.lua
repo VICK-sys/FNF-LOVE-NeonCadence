@@ -116,7 +116,7 @@ function HealthIcon:changeIcon(icon)
 	if not self.isLegacyStyle
 		and self.curAnim
 		and not self.curAnim.looped then
-		self:finish()
+		self.animation:finish()
 	end
 
 	return true

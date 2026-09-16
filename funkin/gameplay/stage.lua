@@ -124,7 +124,7 @@ function Stage:generateStage()
 					if anima then anima.offset:set(anim.offsets[1], anim.offsets[2]) end
 				end
 			end
-			instance:play(prop.startingAnimation or "danceLeft", true)
+			instance.animation:play(prop.startingAnimation or "danceLeft", true)
 		elseif prop.assetPath:sub(1, 1) == '#' then
 			instance = Graphic(prop.position[1], prop.position[2], prop.scale[1] or 1.0, prop.scale[2] or 1.0)
 			instance.color = Color.fromString(prop.assetPath or Color.BLACK)

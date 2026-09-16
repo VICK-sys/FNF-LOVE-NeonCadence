@@ -24,7 +24,7 @@ function create()
 	game.camera.antialiasing = false
 
 	local bg = Sprite(-24, 0, paths.getImage(SCRIPT_PATH .. 'evilSchoolBG'))
-	bg:setScrollFactor(0.6, 1)
+	bg.scrollFactor:set(0.6, 1)
 	bg:updateHitbox()
 	bg.antialiasing = false
 	bg.shader = shader:get()
@@ -59,7 +59,7 @@ function postCreate()
 	end
 
 	dad:dance()
-	dad:finish()
+	dad.anim:finish()
 	cameraMovement(getCameraPosition(camTarget))
 	game.camera:follow(camFollow, nil)
 

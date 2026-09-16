@@ -36,7 +36,7 @@ rain.distortionStrength = 0.5
 local function make(x, y, filename, sx, sy, front)
 	local sprite = Sprite(x, y)
 	sprite:loadTexture(paths.getImage(SCRIPT_PATH .. filename))
-	sprite:setScrollFactor(sx, sy)
+	sprite.scrollFactor:set(sx, sy)
 	add(sprite, front)
 	return sprite
 end
@@ -63,8 +63,8 @@ local camtable, cam
 function create()
 	camZoom = 0.77
 	boyfriendPos = {x = 2151, y = 500}
-	gfPos = {x = 1200, y = 1150}
-	dadPos = {x = 920, y = 1330}
+	gfPos = {x = 1453, y = 1100}
+	dadPos = {x = 920, y = 1310}
 
 	cam = Camera()
 	cam.simple = false
@@ -110,26 +110,26 @@ function create()
 
 	cars = Sprite(1200, 818)
 	cars:setFrames(paths.getSparrowAtlas(SCRIPT_PATH .. 'phillyCars'))
-	cars:setScrollFactor(0.9, 1)
+	cars.scrollFactor:set(0.9, 1)
 	add(cars)
 
 	cars2 = Sprite(1200, 818)
 	cars2:setFrames(paths.getSparrowAtlas(SCRIPT_PATH .. 'phillyCars'))
-	cars2:setScrollFactor(0.9, 1)
+	cars2.scrollFactor:set(0.9, 1)
 	cars2.flipX = true
 	add(cars2)
 
 	for i = 1, 4 do
 		local n = 'car' .. i
-		cars:addAnimByPrefix(n, n, 24, true)
-		cars2:addAnimByPrefix(n, n, 24, true)
+		cars.animation:addByPrefix(n, n, 24, true)
+		cars2.animation:addByPrefix(n, n, 24, true)
 	end
 
 	traffic = Sprite(1840, 608)
 	traffic:setFrames(paths.getSparrowAtlas(SCRIPT_PATH .. 'phillyTraffic'))
-	traffic:setScrollFactor(0.9, 1)
-	traffic:addAnimByPrefix('togreen', 'redtogreen', 24, false)
-	traffic:addAnimByPrefix('tored', 'greentored', 24, false)
+	traffic.scrollFactor:set(0.9, 1)
+	traffic.animation:addByPrefix('togreen', 'redtogreen', 24, false)
+	traffic.animation:addByPrefix('tored', 'greentored', 24, false)
 	add(traffic)
 
 	local trafficLightmap = make(1840, 608, 'phillyTraffic_lightmap', 0.9, 1)
@@ -137,7 +137,7 @@ function create()
 	trafficLightmap.blend = "add"
 
 	make(88, 317, 'phillyForeground', 1, 1)
-	make(920, 1045, 'SpraycanPile', 1, 1, true)
+	self.spraycanPile = make(920, 1045, 'SpraycanPile', 1, 1, true)
 
 	local puddle = Puddle(536, 1120, paths.getImage(SCRIPT_PATH .. 'puddle'), cam)
 	puddle.alpha = 0.6

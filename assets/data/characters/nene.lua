@@ -2,12 +2,9 @@ local ABot, abot = require "abot"
 local lowHealth, raisedKnife, loweredKnife = false, false, true
 
 function postCreate()
-	abot = ABot(self.x, self.y + 100)
+	abot = ABot(self.x - 150, self.y + 308)
 	-- characters arent spritegroups so we add on the stage instead
 	state.stage:insert(state.stage:indexOf(self), abot)
-
-	self.x = self.x + 150
-	self.y = self.y - 208
 end
 
 function onEvent(e)

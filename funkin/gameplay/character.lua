@@ -51,7 +51,8 @@ function Character:new(x, y, char, isPlayer)
 			local anim, name, indices, fps, loop, offset, atlas = unpack(an)
 
 			if not self._animAtlas and atlas and atlas ~= "" and not atlasAdded[atlas] and
-				(paths.exists(atlas .. ".xml", "file") or paths.exists(atlas .. ".txt", "file")) then
+				(paths.exists(paths.getPath("images/" .. atlas .. ".xml"), "file") or
+					paths.exists(paths.getPath("images/" .. atlas .. ".txt"), "file")) then
 				self.frames:addCollection(paths.getAtlas(atlas))
 				atlasAdded[atlas] = true
 			end

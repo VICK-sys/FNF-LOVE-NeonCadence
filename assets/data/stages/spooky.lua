@@ -82,7 +82,7 @@ function create()
 	self.dadCam.y = 34
 
 	base = Graphic(-350, -260, 2000, 2000, Color.fromString("#32325A"))
-	base:setScrollFactor()
+	base.scrollFactor:set(0, 0)
 	base.shaderObj = Shader("csb")
 	base.shader = base.shaderObj:get()
 	self:add(base)

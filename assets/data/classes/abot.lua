@@ -72,6 +72,7 @@ function ABot:new(x, y)
 	self.fft = fft
 
 	self.pupil = AnimateAtlas(x + 55, y + 235, paths.getAnimateAtlas("characters/abot/systemEyes"))
+	self.pupil.origin:set(0, 0)
 	local lf = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16}
 	local rg = {17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36}
 	self.pupil.animation:addByIndices("pupilLeft", '', lf, 24)
@@ -80,6 +81,7 @@ function ABot:new(x, y)
 	self:add(self.pupil)
 
 	self.abot = AnimateAtlas(x, y, paths.getAnimateAtlas("characters/abot/abotSystem"))
+	self.abot.origin:set(0, 0)
 	self.abot.animation:add("beat", "", 24, false)
 	self.abot.animation:play("beat")
 	self:add(self.abot)
