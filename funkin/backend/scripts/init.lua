@@ -109,7 +109,7 @@ Script.messages = Signal()
 Script.Event_Continue = 1
 Script.Event_Cancel = 2
 
-function Script:new(path, notFoundMsg, noLink, fullPath)
+function Script:new(path, notFoundMsg, noLink, fullPath, owner)
 	self.path = path
 	self.variables = {}
 	self.notFoundMsg = (notFoundMsg == nil and true or false)
@@ -130,7 +130,7 @@ function Script:new(path, notFoundMsg, noLink, fullPath)
 			self:set("Event_Continue", Script.Event_Continue)
 			self:set("Event_Cancel", Script.Event_Cancel)
 			self:set("SCRIPT_PATH", p)
-			self:set("state", game.getState())
+			self:set("state", owner or game.getState())
 
 			self:set("send", function(...)
 				if self.closed then return end
@@ -145,7 +145,7 @@ function Script:new(path, notFoundMsg, noLink, fullPath)
 
 			setfenv(chunk, setmetatable(vars, mtenv))
 			if not noLink then
-				self:linkObject(game.getState())
+				self:linkObject(owner or game.getState())
 			end
 			chunk()
 		else

@@ -126,8 +126,9 @@ local triggerChoices = {
 	storymode = {true, function(self)
 		game.switchState(StoryMenuState())
 	end},
-	freeplay = {true, function(self)
-		game.switchState(FreeplayState())
+	freeplay = {false, function(self)
+		self.persistentDraw, self.persistentUpdate = true, false
+		self:openSubstate(FreeplayState())
 	end},
 	credits = {true, function(self)
 		game.switchState(CreditsState())
@@ -174,6 +175,7 @@ end
 function MainMenuState:enterSelection(choice)
 	local switch = triggerChoices[choice]
 	self.selectedSomethin = true
+	self.menuList.lock = true
 
 	game.sound.play(paths.getSound('confirmMenu'))
 	local flicker = Flicker(self.menuBg, switch[1] and 1.1 or 1, 0.15, true)
@@ -202,6 +204,19 @@ function MainMenuState:enterSelection(choice)
 	end
 end
 
+function MainMenuState:closeSubstate()
+	local freeplay = self.substate and self.substate:is(FreeplayState)
+	MainMenuState.super.closeSubstate(self)
+	if freeplay then
+		self.selectedSomethin, self.menuList.lock = false, false
+		self.persistentDraw = true
+		self.menuBg:loadTexture(self.menuYellow)
+		if Discord then
+			Discord.changePresence({details = "In the Menus", state = "Main Menu"})
+		end
+	end
+end
+
 function MainMenuState:leave()
 	self.script:call("leave")
 	if self.notCreated then
@@ -209,7 +224,8 @@ function MainMenuState:leave()
 		return
 	end
 
-	for _, v in ipairs(self.throttles) do v:destroy() end
+	for _, v in pairs(self.throttles) do v:destroy() end
+	for _, v in pairs(self.menuList.throttles or {}) do v:destroy() end
 
 	self.script:call("postLeave")
 	self.script:close()

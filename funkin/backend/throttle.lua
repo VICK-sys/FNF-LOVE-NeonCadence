@@ -37,8 +37,8 @@ function ThrottleObject:check()
 end
 
 function ThrottleObject:destroy()
-	table.destroy(Throttle.list, self)
-	table.insert(dead, setmetatable(self))
+	table.delete(Throttle.list, self)
+	table.insert(dead, setmetatable(self, nil))
 end
 
 -- Throttle

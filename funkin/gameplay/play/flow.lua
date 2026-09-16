@@ -120,7 +120,17 @@ function Flow.endSong(self, PlayState, skip)
 	end
 
 	if not self.usedBotPlay then
-		Highscore.saveScore(PlayState.SONG.song, self.score, self.songDifficulty)
+		local tallies
+		if not self.chartingMode and not PlayState.practiceMode and (PlayState.startPos or 0) == 0 then
+			local notes = self.playerNotefield and self.playerNotefield.chartNotes
+				or PlayState.SONG.notes and PlayState.SONG.notes.player or {}
+			tallies = {
+				sick = self.sicks or 0, good = self.goods or 0, bad = self.bads or 0,
+				shit = self.shits or 0, missed = self.misses or 0, totalNotes = #notes,
+				totalNotesHit = (self.sicks or 0) + (self.goods or 0) + (self.bads or 0) + (self.shits or 0)
+			}
+		end
+		Highscore.saveScore(PlayState.SONG.song, self.score, self.songDifficulty, tallies)
 	end
 	if self.chartingMode then
 		game.switchState(ChartingState())

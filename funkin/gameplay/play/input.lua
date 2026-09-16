@@ -52,7 +52,10 @@ function Input.updateShortcuts(self, PlayState)
 	end
 
 	if Project.DEBUG_MODE then
-		if game.keys.justPressed.ONE then self.playerNotefield.bot = not self.playerNotefield.bot end
+		if game.keys.justPressed.ONE then
+			self.playerNotefield.bot = not self.playerNotefield.bot
+			self.usedBotPlay = true
+		end
 		if game.keys.justPressed.TWO then self:endSong() end
 		if game.keys.justPressed.THREE and not self.startingSong then
 			local time, vocals = (PlayState.conductor.time +
@@ -92,7 +95,7 @@ function Input.onSettingChange(self, category, setting)
 			["botplayMode"] = function()
 				self.playerNotefield.bot = ClientPrefs.data.botplayMode
 				self:recalculateRating()
-				self.usedBotplay = true
+				self.usedBotPlay = true
 			end,
 			["backgroundDim"] = function()
 				self.camHUD.bgColor[4] = ClientPrefs.data.backgroundDim / 100

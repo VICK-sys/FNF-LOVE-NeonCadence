@@ -105,7 +105,12 @@ function Parser.getMeta(name)
 
 		icon = HealthIcon.defaultIcon,
 		color = Color.WHITE,
-		difficulties = {"easy", "normal", "hard"}
+		difficulties = {"easy", "normal", "hard"},
+		ratings = {},
+		previewStart = 0,
+		previewEnd = 15000,
+		instrumental = "",
+		bpm = 100
 	}
 
 	local data = paths.getJSON("songs/" .. format(name) .. "/meta")
@@ -142,6 +147,22 @@ function Parser.getMeta(name)
 
 	meta.charter = get("charter", meta.charter)
 	meta.composer = get({"composer", "artist"}, meta.composer)
+	meta.album = get("album")
+	meta.ratings = get("ratings", meta.ratings)
+	meta.previewStart = get("previewStart", meta.previewStart)
+	meta.previewEnd = get("previewEnd", meta.previewEnd)
+	meta.freeplayOrder = get("freeplayOrder")
+	meta.instrumental = get("instrumental", meta.instrumental)
+	meta.bpm = get("bpm", meta.bpm)
+
+	local characters = get("characters", {})
+	if type(characters) == "table" and type(characters.instrumental) == "string" then
+		meta.instrumental = characters.instrumental
+	end
+	local timeChanges = get("timeChanges", {})
+	if type(timeChanges) == "table" and type(timeChanges[1]) == "table" then
+		meta.bpm = timeChanges[1].bpm or meta.bpm
+	end
 
 	local rawColor = get("color", nil)
 	if rawColor then
