@@ -10,6 +10,10 @@ function UserCard:new(x, y, width, height)
 	self.icon.scrollFactor:set()
 	self:add(self.icon)
 
+	self.initial = Text(0, 0, "", paths.getFont("phantommuff.ttf", 75), nil, "center", 100)
+	self.initial.scrollFactor:set()
+	self:add(self.initial)
+
 	self.name = Text(self.icon.x + self.icon.width + 10, 0, "Name",
 		paths.getFont("phantommuff.ttf", 75))
 	self.name:setOutline("normal", 4)
@@ -57,17 +61,19 @@ function UserCard:reload(d)
 	self.name.content = d.name
 	self.desc.content = d.description
 	self.name:centerOrigin()
-	self.name.scale.x = 1
-
-	if self.name:getWidth() > game.width - self.x - 250 then
-		local factor = game.width / (self.name:getWidth() + self.x + 250)
-		self.name.origin.x = 0
-		self.name.scale.x = factor
-	end
+	self.name.origin.x = 0
+	local nameWidth = self.name:getWidth()
+	self.name.scale.x = nameWidth > 0 and math.min(1, (self.box.width - self.name.x - 10) / nameWidth) or 1
 
 	self.icon.loading = nil
+	self.icon.visible = d.icon ~= nil
+	self.initial.visible = not self.icon.visible
+	self.initial.content = d.name:sub(1, 1):upper()
+	self.initial.y = (100 - self.initial:getHeight()) / 2
 
-	if d.icon:startsWith("https://") then
+	if d.icon == nil then
+		self.icon:loadTexture()
+	elseif d.icon:startsWith("https://") then
 		self.icon:loadTexture(paths.getImage("menus/credits/icons/loading"))
 
 		local icon = d.icon .. "?size=100"

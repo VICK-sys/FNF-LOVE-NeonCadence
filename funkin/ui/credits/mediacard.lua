@@ -13,11 +13,10 @@ end
 function MediaCard:setSize(width, height)
 	self.width, self.height = width, height
 
-	self.icon.x, self.icon.y = self.x + 10,
-		self.y + (self.height - self.icon.height) / 2
+	self.icon.x, self.icon.y = 10, (self.height - self.icon.height) / 2
 
 	self.text.x, self.text.y = self.icon.x + self.icon.width + 10,
-		self.y + (self.height - self.text.height) / 2
+		(self.height - self.text:getHeight()) / 2
 	self.text.limit = (self.width - self.icon.width) - 30
 end
 
@@ -30,10 +29,13 @@ end
 function MediaCard:__render(camera)
 	MediaCard.super.__render(self, camera)
 
-	self.icon.scrollFactor = self.scrollFactor
-	self.text.scrollFactor = self.scrollFactor
-	self.icon:__render(camera)
-	self.text:__render(camera)
+	for _, member in ipairs({self.icon, self.text}) do
+		local x, y = member.x, member.y
+		member.x, member.y = self.x + x, self.y + y
+		member.scrollFactor = self.scrollFactor
+		member:__render(camera)
+		member.x, member.y = x, y
+	end
 end
 
 return MediaCard

@@ -18,14 +18,21 @@ local function user(name, icon, color, description, ...)
 end
 
 CreditsState.defaultData = {
-	category("Contributors", {
+	category("NeonCadence", {
+		user("VICK", "https://github.com/VICK-sys.png", "#53E0D1",
+			"NeonCadence fork development: gameplay refactoring, Freeplay improvements and bug fixes.",
+			"Github", "/VICK-sys/FNF-LOVE-NeonCadence"
+		),
+	}),
 
-		user("Stilic", "https://github.com/stilic.png", "#FFCA45", "Main director and programmer",
+	category("FNF LÖVE", {
+
+		user("Stilic", "https://github.com/stilic.png", "#FFCA45", "Original FNF LÖVE director and programmer",
 			"X", "@stilic_dev",
 			"Github", "/Stilic"
 		),
 
-		user("Raltyro", "https://github.com/raltyro.png", "#FF4545", "Artist and programmer",
+		user("Raltyro", "https://github.com/raltyro.png", "#FF4545", "Artist and programmer, including 3D and modchart systems",
 			"X", "@raltyro",
 			"Youtube", "@Raltyro",
 			"Github", "/Raltyro"
@@ -51,7 +58,15 @@ CreditsState.defaultData = {
 			"Github", "/BlueColorsin"
 		),
 
-		user("FowluhhDev", "https://github.com/fowluhhdevbcfunny.png", "#383838", "Programmer"),
+		user("FowluhhDev", "https://github.com/fowluhhdevbcfunny.png", "#383838", "Dawn Fowler, FNF LÖVE programmer"),
+
+		user("Shirobuu", "https://github.com/Shirobuuh.png", "#B79AFF", "FNF LÖVE development team",
+			"Github", "/Shirobuuh"
+		),
+
+		user("Carrot", "https://github.com/n64carrot.png", "#FFA657", "FNF LÖVE development team",
+			"Github", "/n64carrot"
+		),
 	}),
 
 	category("Funkin' Crew", {
@@ -71,6 +86,68 @@ CreditsState.defaultData = {
 			"X", "@kawaisprite",
 			"Youtube", "@KawaiSprite"
 		),
+
+		user("Funkin' Contributors", "https://github.com/FunkinCrew.png", "#F27CB9",
+			"The wider Friday Night Funkin' team: programming, art, animation, music and gameplay design behind the original game.",
+			"Github", "/FunkinCrew/Funkin"
+		),
+	}),
+
+	category("Guest Creators", {
+		user("Tom Fulp", nil, "#F6B84A", "Creator of the Pico's School characters featured in Friday Night Funkin'."),
+		user("JohnnyUtah", nil, "#AEB6C7", "Creator of Tankman, featured in Week 7."),
+		user("SrPelo", nil, "#FF9257", "Creator of Skid and Pump, featured in Week 2."),
+		user("moawling", nil, "#CE94EA", "Pixel artist for the original Friday Night Funkin'."),
+		user("Bassetfilms", nil, "#ECD45B", "Music for Monster and Winter Horrorland."),
+	}),
+
+	category("Engine & Libs", {
+		user("LÖVE", "https://github.com/love2d.png", "#EA78AB",
+			"The LÖVE development team and contributors. The framework powering rendering, audio, input and threading.",
+			"Github", "/love2d/love"
+		),
+		user("loxel", "https://github.com/stilic.png", "#FFCA45",
+			"The FNF LÖVE authors. The game library behind scenes, sprites, cameras, animation and UI."
+		),
+		user("Baton / tesselode", "https://github.com/tesselode.png", "#76D5A4",
+			"Andrew Minnich's input library, used for keyboard and controller bindings.",
+			"Github", "/tesselode/baton"
+		),
+		user("classic / rxi", "https://github.com/rxi.png", "#95B8ED",
+			"rxi's Lua class library, adapted for the engine's object system.",
+			"Github", "/rxi/classic"
+		),
+		user("hump / vrld", "https://github.com/vrld.png", "#BB9AE5",
+			"Matthias Richter's gamestate library, adapted for state management.",
+			"Github", "/vrld/hump"
+		),
+		user("json.lua / actboy168", "https://github.com/actboy168.png", "#75C8D8",
+			"JSON reading and writing for charts, metadata and saves. Adapted by Stilic for FNF LÖVE.",
+			"Github", "/actboy168/json.lua"
+		),
+		user("Lua XML Parser", "https://github.com/Cluain.png", "#D7B67E",
+			"Cluain's XML parser, the basis for Stilic's atlas parser. Its lineage also credits Jonathan Beebe and Alexander Makeev.",
+			"Github", "/Cluain/Lua-Simple-XML-Parser"
+		),
+		user("lua-https", "https://github.com/love2d.png", "#EA78AB",
+			"The LÖVE team's HTTPS module, used to download online assets such as credit avatars.",
+			"Github", "/love2d/lua-https"
+		),
+	}),
+
+	category("Fonts & Tools", {
+		user("Funkin Packer", nil, "#9FD58A", "NeeEoo's spritesheet packing tool, based on Free Texture Packer. Used for bundled atlas exports.",
+			"Github", "/neeeoo/funkin-packer"
+		),
+		user("You're Gone", nil, "#E799BB", "Ray Larabie's typeface used in Freeplay."),
+		user("VCR OSD Mono", nil, "#A5C6DB", "Interface typeface. The bundled font credits MrManet as its designer."),
+		user("Pixel Arial 11", nil, "#E0C37B", "Pixel typeface credited to Max Remix in the bundled font."),
+		user("5by7", nil, "#A5D39B", "Peter Wiegel's pixel typeface, including the bundled regular and bold variants."),
+		user("OpenMoji", "https://github.com/hfg-gmuend.png", "#F2D35E",
+			"Emoji by Daniel Utz, Benedikt Groß, HfG Schwäbisch Gmünd students and contributors. Licensed under CC BY-SA 4.0.",
+			"Github", "/hfg-gmuend/openmoji"
+		),
+		user("Consolas", nil, "#99B5DC", "Typeface designed by Luc(as) de Groot for Microsoft, used in the statistics display."),
 	}),
 }
 

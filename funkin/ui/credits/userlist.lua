@@ -51,7 +51,14 @@ function UserList:addUsers(name, people, i)
 
 	local function makeCard(name, icon, i)
 		local img, txt = Sprite(x + 10, box.y + (64 * i + 10))
-		if icon:startsWith("https://") then
+		if icon == nil then
+			img.visible = false
+			local initial = Text(img.x, img.y, name:sub(1, 1):upper(),
+				paths.getFont("phantommuff.ttf", 42), nil, "center", 54)
+			initial.y = img.y + (54 - initial:getHeight()) / 2
+			initial.scrollFactor:set(0, 1)
+			self:add(initial)
+		elseif icon:startsWith("https://") then
 			img:loadTexture(paths.getImage("menus/credits/icons/loading"))
 			img.loading = true
 
